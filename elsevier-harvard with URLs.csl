@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
   <info>
-    <title>Elsevier - Harvard (with titles)</title>
+    <title>Elsevier - Harvard (with titles and URLs)</title>
     <id>http://www.zotero.org/styles/elsevier-harvard</id>
     <link href="http://www.zotero.org/styles/elsevier-harvard" rel="self"/>
     <link href="http://www.zotero.org/styles/ecology-letters" rel="template"/>
     <link href="http://www.elsevier.com/journals/biological-conservation/0006-3207/guide-for-authors#68000" rel="documentation"/>
     <author>
-      <name>David Kaplan</name>
-      <email>david.kaplan@ird.fr</email>
-    </author>
+       <name>Miguel Mayol-Tur (fork) </name>
+      <email>m00mayoltur@gmail.com</email>
+        </author>
+   <contributor>
+     <name>David Kaplan</name>
+      <email>david.kaplan@ird.fr</email> 
     <contributor>
       <name>Simon Kornblith</name>
       <email>simon@simonster.com</email>
@@ -89,27 +92,26 @@
       </substitute>
     </names>
   </macro>
-  <macro name="access">
+ <macro name="access">
     <choose>
       <if variable="DOI">
-        <text variable="DOI" prefix="https://doi.org/"/>
+        <text variable="DOI" prefix="doi:"/>
       </if>
-      <else-if type="webpage post-weblog" match="any">
-        <group delimiter=" ">
-          <text value="URL"/>
-          <text variable="URL"/>
-          <group prefix="(" suffix=").">
-            <text term="accessed" suffix=" "/>
-            <date variable="accessed">
-              <date-part name="month" form="numeric" suffix="."/>
-              <date-part name="day" suffix="."/>
-              <date-part name="year" form="short"/>
-            </date>
-          </group>
+      <else-if variable="URL">
+        <text term="available at" suffix=": " text-case="capitalize-first"/>
+        <text variable="URL"/>
+        <group prefix=" (" delimiter=": " suffix=")">
+          <text term="accessed" text-case="capitalize-first"/>
+          <date form="text" variable="accessed">
+            <date-part name="day"/>
+            <date-part name="month"/>
+            <date-part name="year"/>
+          </date>
         </group>
       </else-if>
     </choose>
   </macro>
+
   <macro name="title">
     <choose>
       <if type="report thesis" match="any">
@@ -237,3 +239,6 @@
     </layout>
   </bibliography>
 </style>
+
+   
+    
